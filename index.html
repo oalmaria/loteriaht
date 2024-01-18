@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huétor Tájar</title>
+  <style>
+    body {
+      background-image:url("419.jpg");
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    #container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      padding: 10px;
+      margin: 5px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #45a049;
+    }
+    #resultno {
+      margin-top: 20px;
+      font-weight: bold;
+      color: red;
+    }
+    div.logo{
+        margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h2>Huétor Tájar</h2>
+    <h2>Lotería de Navidad 2023</h2>
+    <div class="logo">
+    <img src="logo.png" alt="logotipo" width="150px">
+</div>
+    <!-- Campo de entrada para el número de lotería -->
+    <label for="numero">Introduce tu número de lotería:</label>
+    <input type="text" id="numero" placeholder="Escribe aquí">
+
+    <button onclick="comprobarNumero()">Comprobar</button>
+
+    <div id="result"></div>
+    <div id="resultno"></div>
+  </div>
+
+  <script>
+    // Lista de números premiados con sus respectivos textos
+    var premios = [
+      { numero: "12345", texto: "Primer premio" },
+      { numero: "23451", texto: "Segundo premio" },
+      { numero: "34512", texto: "Tercer premio" },
+      { numero: "45123", texto: "Cuarto premio" },
+      { numero: "51234", texto: "Quinto premio" }
+    ];
+
+    function comprobarNumero() {
+      // Obtener el número ingresado por el usuario
+      var numeroIngresado = document.getElementById("numero").value;
+
+      // Limpiar resultados anteriores
+      document.getElementById("result").innerText = "";
+
+      // Comprobar si el número es premiado
+      var premioEncontrado = premios.find(function(premio) {
+        return premio.numero === numeroIngresado;
+      });
+
+      // Mostrar el resultado
+      if (premioEncontrado) {
+        document.getElementById("result").innerText = "¡Felicidades! Tu número es el " + premioEncontrado.texto + ".";
+      } else {
+        document.getElementById("resultno").innerText = "Lo siento, tu número no ha sido premiado. Sigue intentándolo. \n Los números premiados han sido: \n1º 11111 \n2º 22222 \n3º 33333 \n4º 44444 \n5º 55555";
+      }
+    }
+  </script>
+</body>
+</html>
